@@ -1,0 +1,42 @@
+  {
+  "project_info": {
+    "project_number": "122606353498",
+    "firebase_url": "https://green-leaf-b00681947.firebaseio.com",
+    "project_id": "green-leaf-b00681947",
+    "storage_bucket": "green-leaf-b00681947.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122606353498:android:e87d3e19820c48c2",
+        "android_client_info": {
+          "package_name": "com.andrewcameron.green_leaf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122606353498-pn8hu6mmm4g4r44fj9ssqmbrhc1v28lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr9nBuJXgZ0csBxM9KnAmzj0_K40J8mow"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
