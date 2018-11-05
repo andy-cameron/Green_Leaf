@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Green_Leaf</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="splash_screen_button_string">Click To Begin</string>
+    <string name="title_activity_green_leaf_introduction">GreenLeafIntroductionActivity</string>
+    <string name="welcome_green_leaf_heading">/ Welcome to Green Leaf</string>
+    <string name="welcome_green_leaf_sub_heading">/ Sub Heading</string>
+    <string name="sample_description">All computers contain a central processing unit that interprets and executes instructions; input devices, such as a keyboard and a mouse, through which data and commands enter the computer.</string>
+    <string name="title_activity_home_screen">HomeScreenActivity</string>
+    <string name="login_home_screen">Login</string>
+    <string name="register_home_screen">Register</string>
+    <string name="title_activity_login_screen">LoginScreenActivity</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="return_string_login">Return</string>
 </resources>
