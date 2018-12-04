@@ -34,6 +34,10 @@
         <activity
             android:name=".RegisterScreenActivity"
             android:label="@string/title_activity_register_screen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProfileScreenActivity"
+            android:label="@string/title_activity_profile_screen"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
