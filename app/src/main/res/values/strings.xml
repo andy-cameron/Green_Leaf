@@ -19,5 +19,6 @@
     <string name="last_name">Last Name</string>
     <string name="confirm_email">Confirm Email</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="Organisation">Organisation</string>
     <string name="cancel">Cancel</string>
 </resources>
