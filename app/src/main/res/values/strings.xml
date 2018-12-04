@@ -21,4 +21,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="Organisation">Organisation</string>
     <string name="cancel">Cancel</string>
+    <string name="title_activity_profile_screen">ProfileScreenActivity</string>
+    <string name="lets_go">Let\'s Go!</string>
 </resources>

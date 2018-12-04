@@ -85,6 +85,16 @@
             android:text="@string/sample_description"
             android:textSize="15sp" />
 
+        <Button
+            android:id="@+id/button_lets_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/lets_go"/>
+
 
     </LinearLayout>
 
