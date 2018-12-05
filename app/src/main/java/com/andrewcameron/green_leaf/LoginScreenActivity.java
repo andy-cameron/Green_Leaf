@@ -123,10 +123,4 @@ public class LoginScreenActivity extends AppCompatActivity {
     public interface OnLoginClickListener {
         void OnLoginClicked(String email, String password);
     }
-
-    public void setOnLoginClickListener(OnLoginClickListener onLoginClickListener) {
-        mOnLoginClickListener = onLoginClickListener;
-    }
-
-
 }
