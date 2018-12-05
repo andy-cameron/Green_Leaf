@@ -30,6 +30,10 @@ public class RegisterScreenActivity extends AppCompatActivity implements View.On
 
     private EditText mEmailField;
     private EditText mPasswordField;
+    private EditText mOrganisation;
+    private EditText mFirstName;
+    private EditText mLastName;
+    private String uID;
 
 //    private EditText firstName;
 //    private EditText surName;
@@ -54,6 +58,9 @@ public class RegisterScreenActivity extends AppCompatActivity implements View.On
         //  Views
         mEmailField = findViewById(R.id.email_input);
         mPasswordField = findViewById(R.id.password_input);
+        mOrganisation = findViewById(R.id.organisation_input);
+        mFirstName = findViewById(R.id.first_name_input);
+        mLastName = findViewById(R.id.last_name_input);
 
         //  Buttons
         findViewById(R.id.register_confirm).setOnClickListener(this);
@@ -94,6 +101,8 @@ public class RegisterScreenActivity extends AppCompatActivity implements View.On
                             Toast.makeText(RegisterScreenActivity.this, "Authentication successful.",
                                     Toast.LENGTH_SHORT).show();
 
+                            createDBProfile();
+
                             Intent myIntent = new Intent(RegisterScreenActivity.this, LoginScreenActivity.class);
                             startActivity(myIntent);
 //                            updateUI(user);
@@ -116,6 +125,23 @@ public class RegisterScreenActivity extends AppCompatActivity implements View.On
     private void cancelRegistration () {
         Intent myIntent = new Intent(RegisterScreenActivity.this, LoginScreenActivity.class);
         startActivity(myIntent);
+    }
+
+    private void createDBProfile () {
+
+        long starterLeaves = 1;
+
+        //INVESTIGATE
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            uID = user.getUid();
+        }
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("Profiles");
+
+        DatabaseReference newProfile = ref.child(uID);
+        newProfile.setValue(new UserProfile(mEmailField.getText().toString(), mFirstName.getText().toString(), mLastName.getText().toString(), mOrganisation.getText().toString(), starterLeaves));
     }
 
     @Override

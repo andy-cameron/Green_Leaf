@@ -1,12 +1,16 @@
 package com.andrewcameron.green_leaf;
 
 public class UserProfile {
-    private String email, name, organisation;
+    private String email, firstName, lastName, organisation;
     private Long numberOfLeaves;
 
-    public UserProfile(String email, String name, String organisation, Long numberOfLeaves) {
+    public UserProfile(){
+    }
+
+    public UserProfile(String email, String firstName, String lastName, String organisation, Long numberOfLeaves) {
         this.email = email;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.organisation = organisation;
         this.numberOfLeaves = numberOfLeaves;
     }
@@ -18,14 +22,6 @@ public class UserProfile {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getOrganisation() {
@@ -42,5 +38,21 @@ public class UserProfile {
 
     public void setNumberOfLeaves(Long numberOfLeaves) {
         this.numberOfLeaves = numberOfLeaves;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
