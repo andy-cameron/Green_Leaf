@@ -42,24 +42,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/email"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
                     android:layout_marginBottom="5dp"/>
                 <EditText
                     android:id="@+id/login_email_input"
-                    android:layout_width="180dp"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="230dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/text_box"
-                    android:layout_marginBottom="30dp"/>
+                    android:layout_marginBottom="30dp"
+                    android:paddingLeft="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/password"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
                     android:layout_marginBottom="5dp"/>
                 <EditText
                     android:id="@+id/login_password_input"
-                    android:layout_width="180dp"
+                    android:inputType="textPassword"
+                    android:layout_width="230dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/text_box"
-                    android:layout_marginBottom="30dp"/>
+                    android:layout_marginBottom="30dp"
+                    android:paddingLeft="10dp"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
