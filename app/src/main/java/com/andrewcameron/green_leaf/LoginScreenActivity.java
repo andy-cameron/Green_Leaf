@@ -97,29 +97,6 @@ public class LoginScreenActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser currentUser) {
     }
 
-
-//    mAuth.signInWithEmailAndPassword(email, password)
-//            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//        @Override
-//        public void onComplete(@NonNull Task<AuthResult> task) {
-//            if (task.isSuccessful()) {
-//                // Sign in success, update UI with the signed-in user's information
-//                Log.d(TAG, "signInWithEmail:success");
-//                FirebaseUser user = mAuth.getCurrentUser();
-//                updateUI(user);
-//
-//                Intent myIntent = new Intent(LoginActivity.this, ProfileActivity.class);
-//                startActivity(myIntent);
-//            } else {
-//                // If sign in fails, display a message to the user.
-//                Log.w(TAG, "signInWithEmail:failure", task.getException());
-//                Toast.makeText(LoginActivity.this, "Authentication failed.",
-//                        Toast.LENGTH_SHORT).show();
-//                updateUI(null);
-//            }
-//        }
-//    });
-
     public interface OnLoginClickListener {
         void OnLoginClicked(String email, String password);
     }
