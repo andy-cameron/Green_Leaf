@@ -41,7 +41,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_screen);
 
         profileName = (TextView) findViewById(R.id.users_name_display);
-        profileEmail = (TextView) findViewById(R.id.user_email_display);
+//        profileEmail = (TextView) findViewById(R.id.user_email_display);
         profileOrganisation = (TextView) findViewById(R.id.user_organisation_display);
         profileLeaves = (TextView) findViewById(R.id.user_leaves_display);
 
@@ -70,10 +70,10 @@ public class ProfileScreenActivity extends AppCompatActivity {
                 String userProfileEmail = (String) dataSnapshot.child("email").getValue();
                 String userProfileOrganisation = (String) dataSnapshot.child("organisation").getValue();
                 Long userProfileLeaves = (Long) dataSnapshot.child("numberOfLeaves").getValue();
-                profileName.setText("/ Hello " + userProfileName + " " + userProfileLastName);
-                profileEmail.setText("/ Email: " + userProfileEmail);
-                profileOrganisation.setText("/ Organisation: " +userProfileOrganisation);
-                profileLeaves.setText("/ " + userProfileLeaves + " Leaves");
+                profileName.setText("/ " + userProfileName + " " + userProfileLastName);
+//                profileEmail.setText("/ Email: " + userProfileEmail);
+                profileOrganisation.setText("/ " +userProfileOrganisation);
+                profileLeaves.setText(userProfileLeaves.toString());
             }
 
             @Override

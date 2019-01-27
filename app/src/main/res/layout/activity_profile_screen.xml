@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,58 +9,332 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingLeft="25dp"
-        android:paddingRight="25dp"
         android:paddingTop="70dp"
-        android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:text="@string/welcome_green_leaf_heading"
-        android:textSize="26sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/users_name_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:paddingRight="25dp"
+        android:paddingBottom="30dp">
 
         <TextView
-            android:id="@+id/user_email_display"
+            android:id="@+id/users_name_display"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:text="User's name"/>
 
         <TextView
             android:id="@+id/user_organisation_display"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Organisation's name"/>
 
-        <TextView
-            android:id="@+id/user_leaves_display"
+        <RelativeLayout
+            android:id="@+id/profile_week_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="25dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="37.5dp"
+                    android:background="@drawable/content_panel"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/week_panel_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:paddingLeft="30dp"
+                            android:text="@string/week_panel_description" />
+
+                        <TextView
+                            android:id="@+id/week_panel_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:gravity="right"
+                            android:paddingRight="30dp"
+                            android:text="@string/week_panel_date"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/date_icon"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mon"
+                                android:textColor="@color/darkestGreen"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/monday_panel_light"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/icon_light"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/date_icon"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tue"
+                                android:textColor="@color/darkestGreen"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/tuesday_panel_light"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/icon_light" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/date_icon"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Wed"
+                                android:textColor="@color/darkestGreen"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/wednesday_panel_light"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/icon_light" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/date_icon"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Thu"
+                                android:textColor="@color/darkestGreen"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/thursday_panel_light"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/icon_light" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/date_icon"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fri"
+                                android:textColor="@color/darkestGreen"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/friday_panel_light"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/icon_light" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/content_panel_button"
+                        android:text="@string/modify" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:background="@drawable/circle_fine"
+                        android:src="@mipmap/green_leaf" />
+                </RelativeLayout>
+            </FrameLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/user_leaves_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/content_panel"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/user_leaves_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="@string/user_leaves_panel_title"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_leaves_title"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circle_fine"
+                    android:src="@mipmap/green_leaf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="x"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user_leaves_display"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="13"
+                            android:textSize="50sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your Ranking"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/content_panel_button"
+                android:text="Explore" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/user_information_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/content_panel"
+            android:orientation="vertical"
+            android:layout_marginBottom="25dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="@string/user_information_panel_title"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:textAlignment="center"
+                android:text="@string/user_information_panel_description"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/content_panel_button"
+                android:text="Explore" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/return_to_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-    <Button
-        android:text="@string/return_string_login"
-        android:id="@+id/return_to_login"
-        android:background="@drawable/button"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:text="Sign Out" />
     </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</ScrollView>
