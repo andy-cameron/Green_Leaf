@@ -23,4 +23,11 @@
     <string name="cancel">Cancel</string>
     <string name="title_activity_profile_screen">ProfileScreenActivity</string>
     <string name="lets_go">Let\'s Go!</string>
+    <string name="week_panel_description">Your Schedule for Week Beginning</string>
+    <string name="week_panel_date">[xx/xx/xxxx]</string>
+    <string name="modify">Modify</string>
+    <string name="explore">Explore</string>
+    <string name="user_leaves_panel_title">Your Leaves</string>
+    <string name="user_information_panel_title">Information</string>
+    <string name="user_information_panel_description">View and modify your information and other details on your Green Leaf profile</string>
 </resources>
