@@ -41,11 +41,19 @@ public class ProfileScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_screen);
 
         profileName = (TextView) findViewById(R.id.users_name_display);
-//        profileEmail = (TextView) findViewById(R.id.user_email_display);
         profileOrganisation = (TextView) findViewById(R.id.user_organisation_display);
         profileLeaves = (TextView) findViewById(R.id.user_leaves_display);
 
+        Button goToPreferences = (Button) findViewById(R.id.go_to_preferences);
         Button returnToLogin = (Button) findViewById(R.id.return_to_login);
+
+        goToPreferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent( ProfileScreenActivity.this, WeekPreferenceScreen.class);
+                startActivity(myIntent);
+            }
+        });
 
         returnToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
