@@ -30,4 +30,8 @@
     <string name="user_leaves_panel_title">Your Leaves</string>
     <string name="user_information_panel_title">Information</string>
     <string name="user_information_panel_description">View and modify your information and other details on your Green Leaf profile</string>
+    <string name="title_activity_week_preference_screen">WeekPreferenceScreen</string>
+    <string name="welcome">/ Welcome</string>
+    <string name="week_preference_instruction">Let the kitchen know when you will be needing to eat the pre prepared meals.</string>
+    <string name="confirm_days">Confirm Days</string>
 </resources>
