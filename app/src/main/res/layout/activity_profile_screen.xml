@@ -50,9 +50,10 @@
                     android:background="@drawable/content_panel"
                     android:orientation="vertical">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/week_panel_description"
@@ -64,14 +65,14 @@
 
                         <TextView
                             android:id="@+id/week_panel_date"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="40dp"
                             android:gravity="right"
-                            android:paddingRight="30dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/week_panel_date"
                             android:textStyle="bold" />
-                    </RelativeLayout>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
