@@ -1,6 +1,5 @@
 package com.andrewcameron.green_leaf;
 
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +37,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     public void onBindViewHolder(MyViewHolder holder, int position) {
         UserProfile userProfileList = mUserProfileList.get(position);
         holder.name.setText(userProfileList.getFirstName() + " " + userProfileList.getLastName());
-        holder.numberOfLeaves.setText(userProfileList.getNumberOfLeaves().toString().toString());
+        holder.numberOfLeaves.setText(userProfileList.getNumberOfLeaves().toString());
     }
 
     @Override
