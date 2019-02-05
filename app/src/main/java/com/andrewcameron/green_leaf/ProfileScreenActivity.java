@@ -45,12 +45,21 @@ public class ProfileScreenActivity extends AppCompatActivity {
         profileLeaves = (TextView) findViewById(R.id.user_leaves_display);
 
         Button goToPreferences = (Button) findViewById(R.id.go_to_preferences);
+        Button goToLeaderboard = (Button) findViewById(R.id.go_to_leaderboard);
         Button returnToLogin = (Button) findViewById(R.id.return_to_login);
 
         goToPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent( ProfileScreenActivity.this, WeekPreferenceScreen.class);
+                startActivity(myIntent);
+            }
+        });
+
+        goToLeaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent( ProfileScreenActivity.this, LeaderboardScreenActivity.class);
                 startActivity(myIntent);
             }
         });

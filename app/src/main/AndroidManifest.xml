@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".LeaderboardScreenActivity"
+            android:label="@string/title_activity_leaderboard_screen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".WeekPreferenceScreen"
             android:label="@string/title_activity_week_preference_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:label="Green Leaf"

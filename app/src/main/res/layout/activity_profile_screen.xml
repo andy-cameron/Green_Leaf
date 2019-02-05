@@ -296,6 +296,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/go_to_leaderboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/content_panel_button"
