@@ -13,7 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +31,12 @@ public class LeaderboardScreenFragment extends Fragment {
     private List<UserProfile> mUserProfileList;
     private RecyclerView mRecyclerView;
     private OnFinishedCLickListener mOnFinishedClickListener;
+    private String uID;
+    private DatabaseReference mDatabase;
+    private FirebaseUser mUser;
+    private FirebaseAuth mAuth;
+
+    private TextView numberOfUserLeaves;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_leaderboard_screen, parent, false);
@@ -68,6 +77,33 @@ public class LeaderboardScreenFragment extends Fragment {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         prepareLeaderboardProfileData();
+
+        //---------------------------------------------------------
+        numberOfUserLeaves = view.findViewById(R.id.number_leaves_plant);
+
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (mUser != null) {
+            uID = mUser.getUid();
+        }
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("Profiles");
+
+        mDatabase.child(uID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String userProfileName = (String) dataSnapshot.child("firstName").getValue();
+                String userProfileLastName = (String) dataSnapshot.child("lastName").getValue();
+                String userProfileEmail = (String) dataSnapshot.child("email").getValue();
+                String userProfileOrganisation = (String) dataSnapshot.child("organisation").getValue();
+                Long userProfileLeaves = (Long) dataSnapshot.child("numberOfLeaves").getValue();
+                numberOfUserLeaves.setText(userProfileLeaves.toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void prepareLeaderboardProfileData() {
