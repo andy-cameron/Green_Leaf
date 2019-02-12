@@ -37,4 +37,7 @@
     <string name="confirm_days">Confirm Days</string>
     <string name="multiply_sign">X</string>
     <string name="title_activity_leaderboard_screen">LeaderboardScreen</string>
+    <string name="information_title">/ Information</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="edit">Edit</string>
 </resources>
