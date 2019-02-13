@@ -40,4 +40,8 @@
     <string name="information_title">/ Information</string>
     <string name="personal_information">Personal Information</string>
     <string name="edit">Edit</string>
+    <string name="security">Security</string>
+    <string name="current_password">/ Current Password</string>
+    <string name="new_password">/ New Password</string>
+    <string name="confirm_new_password">/ Confirm New Password</string>
 </resources>
