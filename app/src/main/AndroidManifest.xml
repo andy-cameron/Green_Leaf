@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/green_leaf"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".InformationScreenActivity"></activity>
         <activity
             android:name=".LeaderboardScreenActivity"
             android:label="@string/title_activity_leaderboard_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WeekPreferenceScreen"
             android:label="@string/title_activity_week_preference_screen"
