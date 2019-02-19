@@ -325,6 +325,7 @@
                 android:textAlignment="center"
                 android:text="@string/user_information_panel_description"/>
             <Button
+                android:id="@+id/go_to_user_information"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/content_panel_button"

@@ -2,13 +2,8 @@ package com.andrewcameron.green_leaf;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -46,6 +41,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
 
         Button goToPreferences = (Button) findViewById(R.id.go_to_preferences);
         Button goToLeaderboard = (Button) findViewById(R.id.go_to_leaderboard);
+        Button goToInformation = (Button) findViewById(R.id.go_to_user_information);
         Button returnToLogin = (Button) findViewById(R.id.return_to_login);
 
         goToPreferences.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +59,14 @@ public class ProfileScreenActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+        goToInformation.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(ProfileScreenActivity.this, InformationScreenActivity.class);
+                startActivity(myIntent);
+            }
+        }));
 
         returnToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
