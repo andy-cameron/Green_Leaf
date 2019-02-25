@@ -21,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -73,6 +74,8 @@ public class LeaderboardScreenFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        ((LinearLayoutManager) mLayoutManager).setReverseLayout(true);
+        ((LinearLayoutManager) mLayoutManager).setStackFromEnd(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -87,6 +90,7 @@ public class LeaderboardScreenFragment extends Fragment {
         }
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Profiles");
+        mDatabase.orderByChild("numberOfLeaves");
 
         mDatabase.child(uID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -108,12 +112,14 @@ public class LeaderboardScreenFragment extends Fragment {
 
     private void prepareLeaderboardProfileData() {
         new GetDataFromFirebase().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-
+        
         //Read From Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Profiles");
+        //Read & Order from Database
+        Query mostLeavesOrdered = myRef.orderByChild("numberOfLeaves");
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        mostLeavesOrdered.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUserProfileList = new ArrayList<>();
