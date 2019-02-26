@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/green_leaf"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InformationScreenActivity"></activity>
+        <activity android:name=".QRScannerScreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".InformationScreenActivity" />
         <activity
             android:name=".LeaderboardScreenActivity"
             android:label="@string/title_activity_leaderboard_screen"
@@ -48,6 +50,10 @@
             android:name=".ProfileScreenActivity"
             android:label="@string/title_activity_profile_screen"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
     </application>
 
 </manifest>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QRScannerScreen"
+    android:paddingTop="70dp"
+    android:paddingHorizontal="25dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/heading_text"
+        android:text="/ Scan The QR Code"
+        android:paddingBottom="25dp"
+        android:textStyle="bold"/>
+    <SurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:visibility="visible"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/content_panel_button" />
+
+</LinearLayout>
