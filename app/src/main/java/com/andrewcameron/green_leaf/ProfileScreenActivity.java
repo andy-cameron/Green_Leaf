@@ -42,12 +42,21 @@ public class ProfileScreenActivity extends AppCompatActivity {
         Button goToPreferences = (Button) findViewById(R.id.go_to_preferences);
         Button goToLeaderboard = (Button) findViewById(R.id.go_to_leaderboard);
         Button goToInformation = (Button) findViewById(R.id.go_to_user_information);
+        Button goToScanQR = (Button) findViewById(R.id.go_to_scan_qr_code);
         Button returnToLogin = (Button) findViewById(R.id.return_to_login);
 
         goToPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent( ProfileScreenActivity.this, WeekPreferenceScreen.class);
+                startActivity(myIntent);
+            }
+        });
+
+        goToScanQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(ProfileScreenActivity.this, QRScannerScreen.class);
                 startActivity(myIntent);
             }
         });

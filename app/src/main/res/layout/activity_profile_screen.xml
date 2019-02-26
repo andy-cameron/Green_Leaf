@@ -260,7 +260,7 @@
                     android:src="@mipmap/qr_code"/>
             </LinearLayout>
             <Button
-                android:id="@+id/scan_qr_code"
+                android:id="@+id/go_to_scan_qr_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/content_panel_button"
