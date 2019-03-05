@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/green_leaf"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QRScannerScreen"
+        <activity android:name=".QRScannerScreenActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".InformationScreenActivity" />
         <activity

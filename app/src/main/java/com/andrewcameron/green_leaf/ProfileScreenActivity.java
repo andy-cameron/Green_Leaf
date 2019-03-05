@@ -56,7 +56,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
         goToScanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(ProfileScreenActivity.this, QRScannerScreen.class);
+                Intent myIntent = new Intent(ProfileScreenActivity.this, QRScannerScreenActivity.class);
                 startActivity(myIntent);
             }
         });
