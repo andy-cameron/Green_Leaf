@@ -100,7 +100,7 @@
                                 android:layout_width="15dp"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="20dp"
-                                android:background="@drawable/icon_light"/>
+                                android:background="@drawable/icon_light_red"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -123,7 +123,7 @@
                                 android:layout_width="15dp"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="20dp"
-                                android:background="@drawable/icon_light" />
+                                android:background="@drawable/icon_light_red" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -146,7 +146,7 @@
                                 android:layout_width="15dp"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="20dp"
-                                android:background="@drawable/icon_light" />
+                                android:background="@drawable/icon_light_red" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -169,7 +169,7 @@
                                 android:layout_width="15dp"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="20dp"
-                                android:background="@drawable/icon_light" />
+                                android:background="@drawable/icon_light_red" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -192,7 +192,7 @@
                                 android:layout_width="15dp"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="20dp"
-                                android:background="@drawable/icon_light" />
+                                android:background="@drawable/icon_light_red" />
                         </LinearLayout>
                     </LinearLayout>
 

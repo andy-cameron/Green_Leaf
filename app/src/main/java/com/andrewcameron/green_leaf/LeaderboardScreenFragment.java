@@ -129,9 +129,11 @@ public class LeaderboardScreenFragment extends Fragment {
                     String firstName = (String) profileSnapshot.child("firstName").getValue();
                     String lastName = (String) profileSnapshot.child("lastName").getValue();
                     String organisation = (String) profileSnapshot.child("organisation").getValue();
-                    Long numberOfLeaves = (Long) profileSnapshot.child("numberOfLeaves").getValue();
+                    Long currentNumberOfLeaves = (Long) profileSnapshot.child("currentNumberOfLeaves").getValue();
+                    Long totalNumberOfLeaves = (Long) profileSnapshot.child("totalNumberOfLeaves").getValue();
+                    Long rewards = (Long) profileSnapshot.child("rewards").getValue();
 
-                    UserProfile userProfile = new UserProfile(email, firstName, lastName, organisation, numberOfLeaves);
+                    UserProfile userProfile = new UserProfile(email, firstName, lastName, organisation, currentNumberOfLeaves, totalNumberOfLeaves, rewards);
                     mUserProfileList.add(userProfile);
                 }
                 mRecyclerView.setAdapter(new LeaderboardAdapter(mUserProfileList));

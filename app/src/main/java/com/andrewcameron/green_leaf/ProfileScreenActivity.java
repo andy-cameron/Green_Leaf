@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,6 +45,12 @@ public class ProfileScreenActivity extends AppCompatActivity {
         Button goToInformation = (Button) findViewById(R.id.go_to_user_information);
         Button goToScanQR = (Button) findViewById(R.id.go_to_scan_qr_code);
         Button returnToLogin = (Button) findViewById(R.id.return_to_login);
+
+        final ImageView mondayPresentLight = (ImageView) findViewById(R.id.monday_panel_light);
+        final ImageView tuesdayPresentLight = (ImageView) findViewById(R.id.tuesday_panel_light);
+        final ImageView wednesdayPresentLight = (ImageView) findViewById(R.id.wednesday_panel_light);
+        final ImageView thursdayPresentLight = (ImageView) findViewById(R.id.thursday_panel_light);
+        final ImageView fridayPresentLight = (ImageView) findViewById(R.id.friday_panel_light);
 
         goToPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +99,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Profiles");
 
+        //Getting basic User Info
         mDatabase.child(uID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -99,11 +107,53 @@ public class ProfileScreenActivity extends AppCompatActivity {
                 String userProfileLastName = (String) dataSnapshot.child("lastName").getValue();
                 String userProfileEmail = (String) dataSnapshot.child("email").getValue();
                 String userProfileOrganisation = (String) dataSnapshot.child("organisation").getValue();
-                Long userProfileLeaves = (Long) dataSnapshot.child("numberOfLeaves").getValue();
+                Long userProfileLeaves = (Long) dataSnapshot.child("currentNumberOfLeaves").getValue();
                 profileName.setText("/ " + userProfileName + " " + userProfileLastName);
 //                profileEmail.setText("/ Email: " + userProfileEmail);
                 profileOrganisation.setText("/ " +userProfileOrganisation);
                 profileLeaves.setText(userProfileLeaves.toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //Getting days present
+        mDatabase.child(uID).child("weekPreferences").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Boolean mondayPresent = (Boolean) dataSnapshot.child("presentMonday").getValue();
+                Boolean tuesdayPresent = (Boolean) dataSnapshot.child("presentTuesday").getValue();
+                Boolean wednesdayPresent = (Boolean) dataSnapshot.child("presentWednesday").getValue();
+                Boolean thursdayPresent = (Boolean) dataSnapshot.child("presentThursday").getValue();
+                Boolean fridayPresent = (Boolean) dataSnapshot.child("presentFriday").getValue();
+
+                if (mondayPresent) {
+                    mondayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_green, null));
+                }
+                else mondayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_red, null));
+
+                if (tuesdayPresent) {
+                    tuesdayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_green, null));
+                }
+                else tuesdayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_red, null));
+
+                if (wednesdayPresent) {
+                    wednesdayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_green, null));
+                }
+                else wednesdayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_red, null));
+
+                if (thursdayPresent) {
+                    thursdayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_green, null));
+                }
+                else thursdayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_red, null));
+
+                if (fridayPresent) {
+                    fridayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_green, null));
+                }
+                else fridayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_red, null));
             }
 
             @Override
