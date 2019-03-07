@@ -99,7 +99,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
                 String userProfileLastName = (String) dataSnapshot.child("lastName").getValue();
                 String userProfileEmail = (String) dataSnapshot.child("email").getValue();
                 String userProfileOrganisation = (String) dataSnapshot.child("organisation").getValue();
-                Long userProfileLeaves = (Long) dataSnapshot.child("numberOfLeaves").getValue();
+                Long userProfileLeaves = (Long) dataSnapshot.child("currentNumberOfLeaves").getValue();
                 profileName.setText("/ " + userProfileName + " " + userProfileLastName);
 //                profileEmail.setText("/ Email: " + userProfileEmail);
                 profileOrganisation.setText("/ " +userProfileOrganisation);

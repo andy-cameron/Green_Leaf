@@ -2,17 +2,19 @@ package com.andrewcameron.green_leaf;
 
 public class UserProfile {
     private String email, firstName, lastName, organisation;
-    private Long numberOfLeaves;
+    private Long currentNumberOfLeaves, totalNumberOfLeaves, plants;
 
     public UserProfile(){
     }
 
-    public UserProfile(String email, String firstName, String lastName, String organisation, Long numberOfLeaves) {
+    public UserProfile(String email, String firstName, String lastName, String organisation, Long currentNumberOfLeaves, Long totalNumberOfLeaves, Long plants) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.organisation = organisation;
-        this.numberOfLeaves = numberOfLeaves;
+        this.currentNumberOfLeaves = currentNumberOfLeaves;
+        this.totalNumberOfLeaves = totalNumberOfLeaves;
+        this.plants = plants;
     }
 
 
@@ -32,12 +34,28 @@ public class UserProfile {
         this.organisation = organisation;
     }
 
-    public Long getNumberOfLeaves() {
-        return numberOfLeaves;
+    public Long getCurrentNumberOfLeaves() {
+        return currentNumberOfLeaves;
     }
 
-    public void setNumberOfLeaves(Long numberOfLeaves) {
-        this.numberOfLeaves = numberOfLeaves;
+    public void setCurrentNumberOfLeaves(Long currentNumberOfLeaves) {
+        this.currentNumberOfLeaves = currentNumberOfLeaves;
+    }
+
+    public Long getTotalNumberOfLeaves() {
+        return totalNumberOfLeaves;
+    }
+
+    public void setTotalNumberOfLeaves(Long totalNumberOfLeaves) {
+        this.totalNumberOfLeaves = totalNumberOfLeaves;
+    }
+
+    public Long getPlants() {
+        return plants;
+    }
+
+    public void setPlants(Long plants) {
+        this.plants = plants;
     }
 
     public String getFirstName() {

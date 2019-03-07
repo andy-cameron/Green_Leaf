@@ -58,11 +58,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MON"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingTop="5dp"
                 android:paddingBottom="35dp"/>
             <ToggleButton
+                android:id="@+id/day_1_monday"
                 android:background="@drawable/date_toggle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -79,11 +80,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TUE"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingTop="5dp"
                 android:paddingBottom="35dp"/>
             <ToggleButton
+                android:id="@+id/day_2_tuesday"
                 android:background="@drawable/date_toggle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -100,11 +102,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="WED"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingTop="5dp"
                 android:paddingBottom="35dp"/>
             <ToggleButton
+                android:id="@+id/day_3_wednesday"
                 android:background="@drawable/date_toggle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -121,11 +124,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="THU"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingTop="5dp"
                 android:paddingBottom="35dp"/>
             <ToggleButton
+                android:id="@+id/day_4_thursday"
                 android:background="@drawable/date_toggle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -142,11 +146,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FRI"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingTop="5dp"
                 android:paddingBottom="35dp"/>
             <ToggleButton
+                android:id="@+id/day_5_friday"
                 android:background="@drawable/date_toggle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
