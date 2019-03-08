@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,7 +38,8 @@ public class LeaderboardScreenFragment extends Fragment {
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
 
-    private TextView numberOfUserLeaves;
+    private TextView currentNumberOfUserLeaves;
+    private ImageView plantStamp;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_leaderboard_screen, parent, false);
@@ -82,7 +84,8 @@ public class LeaderboardScreenFragment extends Fragment {
         prepareLeaderboardProfileData();
 
         //---------------------------------------------------------
-        numberOfUserLeaves = view.findViewById(R.id.number_leaves_plant);
+        currentNumberOfUserLeaves = view.findViewById(R.id.number_leaves_plant);
+        plantStamp = view.findViewById(R.id.plant_stamp);
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         if (mUser != null) {
@@ -100,7 +103,95 @@ public class LeaderboardScreenFragment extends Fragment {
                 String userProfileEmail = (String) dataSnapshot.child("email").getValue();
                 String userProfileOrganisation = (String) dataSnapshot.child("organisation").getValue();
                 Long userProfileLeaves = (Long) dataSnapshot.child("totalNumberOfLeaves").getValue();
-                numberOfUserLeaves.setText(userProfileLeaves.toString());
+                Long currentNumberOfLeaves = (Long) dataSnapshot.child("currentNumberOfLeaves").getValue();
+                currentNumberOfUserLeaves.setText(currentNumberOfLeaves.toString());
+
+                //Setting plant
+                switch (currentNumberOfLeaves.intValue()) {
+                    case 0:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves0));
+                        break;
+
+                    case 1:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves1));
+                        break;
+
+                    case 2:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves2));
+                        break;
+
+                    case 3:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves3));
+                        break;
+
+                    case 4:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves4));
+                        break;
+
+                    case 5:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves5));
+                        break;
+
+                    case 6:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves6));
+                        break;
+
+                    case 7:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves7));
+                        break;
+
+                    case 8:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves8));
+                        break;
+
+                    case 9:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves9));
+                        break;
+
+                    case 10:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves10));
+                        break;
+
+                    case 11:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves11));
+                        break;
+
+                    case 12:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves12));
+                        break;
+
+                    case 13:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves13));
+                        break;
+
+                    case 14:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves14));
+                        break;
+
+                    case 15:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves15));
+                        break;
+
+                    case 16:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves16));
+                        break;
+
+                    case 17:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves17));
+                        break;
+
+                    case 18:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves18));
+                        break;
+
+                    case 19:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves19));
+                        break;
+
+                    case 20:
+                        plantStamp.setImageDrawable(getResources().getDrawable(R.mipmap.stampsheet_leaves20));
+                        break;
+                }
             }
 
             @Override
@@ -108,6 +199,8 @@ public class LeaderboardScreenFragment extends Fragment {
 
             }
         });
+
+
     }
 
     private void prepareLeaderboardProfileData() {
