@@ -21,7 +21,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "";
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase, mDatabaseConfiguration;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
     private String uID;
@@ -30,6 +30,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
     private TextView profileEmail;
     private TextView profileOrganisation;
     private TextView profileLeaves;
+    private TextView loyaltyWeek;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
         profileName = (TextView) findViewById(R.id.users_name_display);
         profileOrganisation = (TextView) findViewById(R.id.user_organisation_display);
         profileLeaves = (TextView) findViewById(R.id.user_leaves_display);
+        loyaltyWeek = (TextView) findViewById(R.id.week_panel_date);
 
         Button goToPreferences = (Button) findViewById(R.id.go_to_preferences);
         Button goToLeaderboard = (Button) findViewById(R.id.go_to_leaderboard);
@@ -98,6 +100,21 @@ public class ProfileScreenActivity extends AppCompatActivity {
         }
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Profiles");
+        mDatabaseConfiguration = FirebaseDatabase.getInstance().getReference("Configuration");
+
+        //Getting Configuration Info
+        mDatabaseConfiguration.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String loyaltyWeekText = (String) dataSnapshot.child("current_week").getValue();
+                loyaltyWeek.setText(loyaltyWeekText);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         //Getting basic User Info
         mDatabase.child(uID).addListenerForSingleValueEvent(new ValueEventListener() {
