@@ -2,6 +2,7 @@ package com.andrewcameron.green_leaf;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -10,8 +11,11 @@ import android.widget.ToggleButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class WeekPreferenceScreen extends AppCompatActivity {
 
@@ -56,17 +60,61 @@ public class WeekPreferenceScreen extends AppCompatActivity {
         });
     }
 
+    private void rewardingLeaves () {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private void setPreferences () {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             uID = user.getUid();
         }
-
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("Profiles").child(uID);
+        DatabaseReference configRef = database.getReference();
 
-        DatabaseReference newPreferencesField = ref.child("weekPreferences");
-        newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked()));
+        configRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String weekIndex = (String) dataSnapshot.child("Configuration").child("current_week_index").getValue();
+                String userWeekIndex = (String) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("recentWeekSubmitted").getValue();
+                Long currentNumberOfLeaves = (Long) dataSnapshot.child("Profiles").child(uID).child("currentNumberOfLeaves").getValue();
+                Long totalNumberOfLeaves = (Long) dataSnapshot.child("Profiles").child(uID).child("totalNumberOfLeaves").getValue();
+
+                if (weekIndex.equals(userWeekIndex)) {
+                    DatabaseReference ref = database.getReference("Profiles").child(uID);
+                    DatabaseReference newPreferencesField = ref.child("weekPreferences");
+                    newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekIndex));
+                } else {
+                    DatabaseReference ref = database.getReference("Profiles").child(uID);
+                    DatabaseReference newPreferencesField = ref.child("weekPreferences");
+                    DatabaseReference updateCurrentLeaves = ref.child("currentNumberOfLeaves");
+                    DatabaseReference updateTotalLeaves = ref.child("totalNumberOfLeaves");
+
+                    newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekIndex));
+                    updateCurrentLeaves.setValue(currentNumberOfLeaves + 1);
+                    updateTotalLeaves.setValue(totalNumberOfLeaves + 1);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
 }
