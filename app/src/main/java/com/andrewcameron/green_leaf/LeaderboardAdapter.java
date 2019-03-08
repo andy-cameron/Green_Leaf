@@ -37,7 +37,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     public void onBindViewHolder(MyViewHolder holder, int position) {
         UserProfile userProfileList = mUserProfileList.get(position);
         holder.name.setText(userProfileList.getFirstName() + " " + userProfileList.getLastName());
-        holder.numberOfLeaves.setText(userProfileList.getCurrentNumberOfLeaves().toString());
+        holder.numberOfLeaves.setText(userProfileList.getTotalNumberOfLeaves().toString());
     }
 
     @Override
