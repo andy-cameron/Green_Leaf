@@ -154,6 +154,8 @@ public class ProfileScreenActivity extends AppCompatActivity {
                     fridayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_green, null));
                 }
                 else fridayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_red, null));
+
+
             }
 
             @Override
