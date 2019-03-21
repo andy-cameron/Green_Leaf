@@ -19,6 +19,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
             super(view);
             name = (TextView) view.findViewById(R.id.users_name_display);
             numberOfLeaves = (TextView) view.findViewById(R.id.number_leaves_display_card);
+            ranking = (TextView) view.findViewById(R.id.ranking_number);
         }
     }
 
@@ -38,6 +39,8 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         UserProfile userProfileList = mUserProfileList.get(position);
         holder.name.setText(userProfileList.getFirstName() + " " + userProfileList.getLastName());
         holder.numberOfLeaves.setText(userProfileList.getTotalNumberOfLeaves().toString());
+        int rankingNumber = mUserProfileList.size() - position;
+        holder.ranking.setText(String.valueOf(rankingNumber));
     }
 
     @Override
