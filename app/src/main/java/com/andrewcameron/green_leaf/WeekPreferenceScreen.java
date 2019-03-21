@@ -54,8 +54,6 @@ public class WeekPreferenceScreen extends AppCompatActivity {
             public void onClick(View v) {
 
                 setPreferences();
-                Intent myIntent = new Intent(WeekPreferenceScreen.this, ProfileScreenActivity.class);
-                startActivity(myIntent);
             }
         });
     }
