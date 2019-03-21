@@ -1,6 +1,9 @@
 package com.andrewcameron.green_leaf;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -26,12 +29,16 @@ public class WeekPreferenceScreen extends AppCompatActivity {
     private ToggleButton wednesdayChecked;
     private ToggleButton thursdayChecked;
     private ToggleButton fridayChecked;
+
+    //Prompt
+    Dialog leavesConfirmedPrompt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_week_preference_screen);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        leavesConfirmedPrompt = new Dialog(this);
 
         final Button returnToProfile = (Button) findViewById(R.id.return_to_profile);
         final Button confirmPreferences = (Button) findViewById(R.id.confirm_preferences);
@@ -52,10 +59,24 @@ public class WeekPreferenceScreen extends AppCompatActivity {
         confirmPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 setPreferences();
+                ShowLeavesPrompt(v);
             }
         });
+    }
+
+    public void ShowLeavesPrompt(View v) {
+        Button returnBtn;
+        leavesConfirmedPrompt.setContentView(R.layout.confirm_leaves_prompt);
+        returnBtn = (Button) leavesConfirmedPrompt.findViewById(R.id.button_return_prompt);
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                leavesConfirmedPrompt.dismiss();
+            }
+        });
+        leavesConfirmedPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        leavesConfirmedPrompt.show();
     }
 
     private void rewardingLeaves () {
