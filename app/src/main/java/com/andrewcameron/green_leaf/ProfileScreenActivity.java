@@ -103,10 +103,10 @@ public class ProfileScreenActivity extends AppCompatActivity {
         mDatabaseConfiguration = FirebaseDatabase.getInstance().getReference("Configuration");
 
         //Getting Configuration Info
-        mDatabaseConfiguration.addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String loyaltyWeekText = (String) dataSnapshot.child("current_week").getValue();
+                String loyaltyWeekText = (String) dataSnapshot.child(uID).child("weekPreferences").child("recentWeekSubmitted").getValue();
                 loyaltyWeek.setText(loyaltyWeekText);
             }
 
