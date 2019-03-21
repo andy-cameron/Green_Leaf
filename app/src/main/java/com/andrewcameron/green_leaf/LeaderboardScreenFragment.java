@@ -210,7 +210,7 @@ public class LeaderboardScreenFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Profiles");
         //Read & Order from Database
-        Query mostLeavesOrdered = myRef.orderByChild("numberOfLeaves");
+        Query mostLeavesOrdered = myRef.orderByChild("totalNumberOfLeaves");
 
         mostLeavesOrdered.addValueEventListener(new ValueEventListener() {
             @Override
