@@ -87,8 +87,9 @@ public class WeekPreferenceScreen extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //Obtaining the configuration of the current week
                 String weekIndex = (String) dataSnapshot.child("Configuration").child("current_week_index").getValue();
+                String weekDate = (String) dataSnapshot.child("Configuration").child("current_week").getValue();
                 //Obtaining the value of the user's current week
-                String userWeekIndex = (String) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("recentWeekSubmitted").getValue();
+                String userWeekIndex = (String) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("recentWeekIndexSubmitted").getValue();
                 //Obtaining user's number of Leaves (Total and current)
                 long currentNumberOfLeaves = (long) dataSnapshot.child("Profiles").child(uID).child("currentNumberOfLeaves").getValue();
                 long totalNumberOfLeaves = (long) dataSnapshot.child("Profiles").child(uID).child("totalNumberOfLeaves").getValue();
@@ -97,7 +98,7 @@ public class WeekPreferenceScreen extends AppCompatActivity {
                 if (weekIndex.equals(userWeekIndex)) {
                     DatabaseReference ref = database.getReference("Profiles").child(uID);
                     DatabaseReference newPreferencesField = ref.child("weekPreferences");
-                    newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekIndex));
+                    newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekDate, weekIndex));
                 } else {
                     DatabaseReference ref = database.getReference("Profiles").child(uID);
                     DatabaseReference newPreferencesField = ref.child("weekPreferences");
@@ -106,12 +107,12 @@ public class WeekPreferenceScreen extends AppCompatActivity {
                     DatabaseReference updatePlants = ref.child("plants");
 
                     if (currentNumberOfLeaves == 20) {
-                        newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekIndex));
+                        newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekDate, weekIndex));
                         updateCurrentLeaves.setValue(1);
                         updateTotalLeaves.setValue(totalNumberOfLeaves + 1);
                         updatePlants.setValue(numberOfPlants + 1);
                     } else {
-                        newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekIndex));
+                        newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekDate, weekIndex));
                         updateCurrentLeaves.setValue(currentNumberOfLeaves + 1);
                         updateTotalLeaves.setValue(totalNumberOfLeaves + 1);
                     }
