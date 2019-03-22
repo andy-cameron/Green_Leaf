@@ -30,6 +30,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
     private TextView profileEmail;
     private TextView profileOrganisation;
     private TextView profileLeaves;
+    private TextView profilePlants;
     private TextView loyaltyWeek;
 
     @Override
@@ -40,6 +41,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
         profileName = (TextView) findViewById(R.id.users_name_display);
         profileOrganisation = (TextView) findViewById(R.id.user_organisation_display);
         profileLeaves = (TextView) findViewById(R.id.user_leaves_display);
+        profilePlants = (TextView) findViewById(R.id.user_plants_display);
         loyaltyWeek = (TextView) findViewById(R.id.week_panel_date);
 
         Button goToPreferences = (Button) findViewById(R.id.go_to_preferences);
@@ -125,10 +127,12 @@ public class ProfileScreenActivity extends AppCompatActivity {
                 String userProfileEmail = (String) dataSnapshot.child("email").getValue();
                 String userProfileOrganisation = (String) dataSnapshot.child("organisation").getValue();
                 Long userProfileLeaves = (Long) dataSnapshot.child("currentNumberOfLeaves").getValue();
+                Long userPlantLeaves = (Long) dataSnapshot.child("plants").getValue();
                 profileName.setText("/ " + userProfileName + " " + userProfileLastName);
 //                profileEmail.setText("/ Email: " + userProfileEmail);
                 profileOrganisation.setText("/ " +userProfileOrganisation);
                 profileLeaves.setText(userProfileLeaves.toString());
+                profilePlants.setText(userPlantLeaves.toString());
             }
 
             @Override
