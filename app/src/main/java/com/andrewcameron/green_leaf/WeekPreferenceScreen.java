@@ -32,6 +32,7 @@ public class WeekPreferenceScreen extends AppCompatActivity {
 
     //Prompt
     Dialog leavesConfirmedPrompt;
+    Dialog daysConfirmPrompt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,7 @@ public class WeekPreferenceScreen extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         leavesConfirmedPrompt = new Dialog(this);
+        daysConfirmPrompt = new Dialog(this);
 
         final Button returnToProfile = (Button) findViewById(R.id.return_to_profile);
         final Button confirmPreferences = (Button) findViewById(R.id.confirm_preferences);
@@ -66,17 +68,53 @@ public class WeekPreferenceScreen extends AppCompatActivity {
     }
 
     public void ShowLeavesPrompt(View v) {
-        Button returnBtn;
-        leavesConfirmedPrompt.setContentView(R.layout.confirm_leaves_prompt);
-        returnBtn = (Button) leavesConfirmedPrompt.findViewById(R.id.button_return_prompt);
-        returnBtn.setOnClickListener(new View.OnClickListener() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            uID = user.getUid();
+        }
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference profileRef = database.getReference();
+
+        profileRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                leavesConfirmedPrompt.dismiss();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String weekIndex = (String) dataSnapshot.child("Configuration").child("current_week_index").getValue();
+                String userWeekIndex = (String) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("recentWeekIndexSubmitted").getValue();
+
+                if (weekIndex.equals(userWeekIndex)) {
+                    daysConfirmPrompt.setContentView(R.layout.confirm_days_prompt);
+
+                    Button returnBtn;
+                    returnBtn = (Button) daysConfirmPrompt.findViewById(R.id.button_return_prompt);
+                    returnBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            daysConfirmPrompt.dismiss();
+                        }
+                    });
+                    daysConfirmPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    daysConfirmPrompt.show();
+                } else {
+                    leavesConfirmedPrompt.setContentView(R.layout.confirm_leaves_prompt);
+
+                    Button returnBtn;
+                    returnBtn = (Button) leavesConfirmedPrompt.findViewById(R.id.button_return_prompt);
+                    returnBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            leavesConfirmedPrompt.dismiss();
+                        }
+                    });
+                    leavesConfirmedPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    leavesConfirmedPrompt.show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
-        leavesConfirmedPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        leavesConfirmedPrompt.show();
     }
 
     private void rewardingLeaves () {
