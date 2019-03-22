@@ -1,6 +1,9 @@
 package com.andrewcameron.green_leaf;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -26,12 +29,18 @@ public class WeekPreferenceScreen extends AppCompatActivity {
     private ToggleButton wednesdayChecked;
     private ToggleButton thursdayChecked;
     private ToggleButton fridayChecked;
+
+    //Prompt
+    Dialog leavesConfirmedPrompt;
+    Dialog daysConfirmPrompt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_week_preference_screen);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        leavesConfirmedPrompt = new Dialog(this);
+        daysConfirmPrompt = new Dialog(this);
 
         final Button returnToProfile = (Button) findViewById(R.id.return_to_profile);
         final Button confirmPreferences = (Button) findViewById(R.id.confirm_preferences);
@@ -52,8 +61,58 @@ public class WeekPreferenceScreen extends AppCompatActivity {
         confirmPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 setPreferences();
+                ShowLeavesPrompt(v);
+            }
+        });
+    }
+
+    public void ShowLeavesPrompt(View v) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            uID = user.getUid();
+        }
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference profileRef = database.getReference();
+
+        profileRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String weekIndex = (String) dataSnapshot.child("Configuration").child("current_week_index").getValue();
+                String userWeekIndex = (String) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("recentWeekIndexSubmitted").getValue();
+
+                if (weekIndex.equals(userWeekIndex)) {
+                    daysConfirmPrompt.setContentView(R.layout.confirm_days_prompt);
+
+                    Button returnBtn;
+                    returnBtn = (Button) daysConfirmPrompt.findViewById(R.id.button_return_prompt);
+                    returnBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            daysConfirmPrompt.dismiss();
+                        }
+                    });
+                    daysConfirmPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    daysConfirmPrompt.show();
+                } else {
+                    leavesConfirmedPrompt.setContentView(R.layout.confirm_leaves_prompt);
+
+                    Button returnBtn;
+                    returnBtn = (Button) leavesConfirmedPrompt.findViewById(R.id.button_return_prompt);
+                    returnBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            leavesConfirmedPrompt.dismiss();
+                        }
+                    });
+                    leavesConfirmedPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    leavesConfirmedPrompt.show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
