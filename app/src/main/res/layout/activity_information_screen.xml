@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -46,20 +47,21 @@
                     android:textStyle="bold"
                     android:textColor="@color/darkestGreen"
                     android:paddingRight="30dp"
-                    android:textSize="18sp"/>
+                    android:textSize="14sp"/>
 
-                <EditText
+                <TextView
+                    android:id="@+id/profile_name"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:paddingRight="30dp"
-                    android:text="/ User's Name"
-                    android:textSize="18sp" />
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/button_grey"
-                    android:text="@string/edit"
-                    android:layout_marginLeft="10dp"/>
+                    android:hint="/ User's Name"
+                    android:textSize="14sp" />
+                <!--<Button-->
+                    <!--android:layout_width="50dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:background="@drawable/button_grey"-->
+                    <!--android:text="@string/edit"-->
+                    <!--android:layout_marginLeft="10dp"/>-->
             </LinearLayout>
 
             <LinearLayout
@@ -73,14 +75,16 @@
                     android:textStyle="bold"
                     android:textColor="@color/darkestGreen"
                     android:paddingRight="30dp"
-                    android:textSize="18sp"/>
+                    android:textSize="14sp"/>
                 <EditText
+                    android:id="@+id/profile_email"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    android:text="/ User's Email"
-                    android:textSize="18sp"
+                    android:hint="/ User's Email"
+                    android:textSize="14sp"
                     android:paddingRight="30dp"/>
                 <Button
+                    android:id="@+id/edit_email_button"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:background="@drawable/button_grey"
@@ -99,12 +103,12 @@
                     android:textStyle="bold"
                     android:textColor="@color/darkestGreen"
                     android:paddingRight="30dp"
-                    android:textSize="18sp"/>
+                    android:textSize="14sp"/>
                 <EditText
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:text="/ TBD"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:paddingRight="30dp"/>
                 <Button
                     android:layout_width="50dp"
