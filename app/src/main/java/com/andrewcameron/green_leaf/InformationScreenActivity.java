@@ -1,6 +1,9 @@
 package com.andrewcameron.green_leaf;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -38,10 +41,14 @@ public class InformationScreenActivity extends AppCompatActivity {
     private EditText newPasswordConfirm;
     private TextView profileLeaves;
 
+    //Prompt
+    Dialog emailPrompt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_screen);
+        emailPrompt = new Dialog(this);
 
 
         Button returnToProfileScreen = (Button) findViewById(R.id.return_to_profile);
@@ -89,13 +96,18 @@ public class InformationScreenActivity extends AppCompatActivity {
 
         editEmail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 mUser.updateEmail(profileEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "User email address updated.");
                             mDatabase.child("email").setValue(profileEmail.getText().toString());
+                            String newEmail = profileEmail.getText().toString();
+                            profileEmail.setHint(newEmail);
+                            profileEmail.setText(null);
+                            profileEmail.clearFocus();
+                            UpdateEmailPrompt(v);
                         }
                     }
                 });
@@ -140,5 +152,20 @@ public class InformationScreenActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void UpdateEmailPrompt(View v) {
+        emailPrompt.setContentView(R.layout.email_changed_prompt);
+
+        Button returnBtn;
+        returnBtn = (Button) emailPrompt.findViewById(R.id.button_return_prompt);
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                emailPrompt.dismiss();
+            }
+        });
+        emailPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        emailPrompt.show();
     }
 }
