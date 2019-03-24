@@ -1,13 +1,18 @@
 package com.andrewcameron.green_leaf;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.HideReturnsTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,11 +43,20 @@ public class InformationScreenActivity extends AppCompatActivity {
     private EditText newPasswordConfirm;
     private TextView profileLeaves;
 
+    private ImageButton showCurrentPassword;
+    private ImageButton showNewPassword;
+    private ImageButton showNewPasswordConfirm;
+
+    //Prompt
+    Dialog emailPrompt;
+    Dialog passwordPrompt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_screen);
-
+        emailPrompt = new Dialog(this);
+        passwordPrompt = new Dialog(this);
 
         Button returnToProfileScreen = (Button) findViewById(R.id.return_to_profile);
         Button editEmail = (Button) findViewById(R.id.edit_email_button);
@@ -52,6 +66,9 @@ public class InformationScreenActivity extends AppCompatActivity {
         currentPassword = findViewById(R.id.current_password);
         newPassword = findViewById(R.id.new_password);
         newPasswordConfirm = findViewById(R.id.confirm_password);
+        showCurrentPassword = findViewById(R.id.show_current_password);
+        showNewPassword = findViewById(R.id.show_new_password);
+        showNewPasswordConfirm = findViewById(R.id.show_confirm_new_password);
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         if (mUser != null) {
@@ -89,13 +106,18 @@ public class InformationScreenActivity extends AppCompatActivity {
 
         editEmail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 mUser.updateEmail(profileEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "User email address updated.");
                             mDatabase.child("email").setValue(profileEmail.getText().toString());
+                            String newEmail = profileEmail.getText().toString();
+                            profileEmail.setHint(newEmail);
+                            profileEmail.setText(null);
+                            profileEmail.clearFocus();
+                            UpdateEmailPrompt(v);
                         }
                     }
                 });
@@ -104,7 +126,7 @@ public class InformationScreenActivity extends AppCompatActivity {
 
         editPassword.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
                 if (newPassword.getText().toString().equals(newPasswordConfirm.getText().toString())) {
                     mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -121,6 +143,13 @@ public class InformationScreenActivity extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
                                                         Log.d(TAG, "Password updated");
+                                                        currentPassword.setText(null);
+                                                        currentPassword.clearFocus();
+                                                        newPassword.setText(null);
+                                                        newPassword.clearFocus();
+                                                        newPasswordConfirm.setText(null);
+                                                        newPasswordConfirm.clearFocus();
+                                                        UpdatePasswordPrompt(v);
                                                     } else {
                                                         Log.d(TAG, "Error password not updated");
                                                     }
@@ -140,5 +169,56 @@ public class InformationScreenActivity extends AppCompatActivity {
                 }
             }
         });
+
+        showCurrentPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+        });
+
+        showNewPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+        });
+
+        showNewPasswordConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newPasswordConfirm.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+        });
+    }
+
+    public void UpdateEmailPrompt(View v) {
+        emailPrompt.setContentView(R.layout.email_changed_prompt);
+
+        Button returnBtn;
+        returnBtn = (Button) emailPrompt.findViewById(R.id.button_return_prompt);
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                emailPrompt.dismiss();
+            }
+        });
+        emailPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        emailPrompt.show();
+    }
+
+    public void UpdatePasswordPrompt(View v) {
+        passwordPrompt.setContentView(R.layout.password_changed_prompt);
+
+        Button returnBtn;
+        returnBtn = (Button) passwordPrompt.findViewById(R.id.button_return_prompt);
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passwordPrompt.dismiss();
+            }
+        });
+        passwordPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        passwordPrompt.show();
     }
 }
