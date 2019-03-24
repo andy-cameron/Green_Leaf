@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +33,9 @@ public class InformationScreenActivity extends AppCompatActivity {
 
     private TextView profileName;
     private EditText profileEmail;
-    private EditText profileOrganisation;
+    private EditText currentPassword;
+    private EditText newPassword;
+    private EditText newPasswordConfirm;
     private TextView profileLeaves;
 
     @Override
@@ -42,8 +46,12 @@ public class InformationScreenActivity extends AppCompatActivity {
 
         Button returnToProfileScreen = (Button) findViewById(R.id.return_to_profile);
         Button editEmail = (Button) findViewById(R.id.edit_email_button);
+        Button editPassword = (Button) findViewById(R.id.edit_password);
         profileName = findViewById(R.id.profile_name);
         profileEmail = findViewById(R.id.profile_email);
+        currentPassword = findViewById(R.id.current_password);
+        newPassword = findViewById(R.id.new_password);
+        newPasswordConfirm = findViewById(R.id.confirm_password);
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         if (mUser != null) {
@@ -91,6 +99,45 @@ public class InformationScreenActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        editPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (newPassword.getText().toString().equals(newPasswordConfirm.getText().toString())) {
+                    mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            String userEmail = (String) dataSnapshot.child("email").getValue();
+                            AuthCredential credential = EmailAuthProvider.getCredential(userEmail, currentPassword.getText().toString());
+                            mUser.reauthenticate(credential)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            mUser.updatePassword(newPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Log.d(TAG, "Password updated");
+                                                    } else {
+                                                        Log.d(TAG, "Error password not updated");
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    });
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                } else {
+                    System.out.println("Unsuccessful!!!");
+                }
             }
         });
     }

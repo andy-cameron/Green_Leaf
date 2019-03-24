@@ -146,6 +146,7 @@
                     android:textSize="14sp"
                     android:layout_weight="1"/>
                 <EditText
+                    android:id="@+id/current_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingRight="30dp"
@@ -168,6 +169,7 @@
                     android:textSize="14sp"
                     android:layout_weight="1"/>
                 <EditText
+                    android:id="@+id/new_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingRight="30dp"
@@ -190,6 +192,7 @@
                     android:textSize="14sp"
                     android:layout_weight="1"/>
                 <EditText
+                    android:id="@+id/confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingRight="30dp"
@@ -199,7 +202,7 @@
                     android:layout_weight="1"/>
             </LinearLayout>
             <Button
-                android:id="@+id/go_to_leaderboard"
+                android:id="@+id/edit_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/content_panel_button"
