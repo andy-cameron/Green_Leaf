@@ -149,6 +149,18 @@ public class WeekPreferenceScreen extends AppCompatActivity {
                 String weekDate = (String) dataSnapshot.child("Configuration").child("current_week").getValue();
                 //Obtaining the value of the user's current week
                 String userWeekIndex = (String) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("recentWeekIndexSubmitted").getValue();
+                //Obtaining values on Stats for the week
+                long monday = (long) dataSnapshot.child("Stats").child(weekIndex).child("day_1_monday").getValue();
+                long tuesday = (long) dataSnapshot.child("Stats").child(weekIndex).child("day_2_tuesday").getValue();
+                long wednesday = (long) dataSnapshot.child("Stats").child(weekIndex).child("day_3_wednesday").getValue();
+                long thursday = (long) dataSnapshot.child("Stats").child(weekIndex).child("day_4_thursday").getValue();
+                long friday = (long) dataSnapshot.child("Stats").child(weekIndex).child("day_5_friday").getValue();
+                //Obtaining user's preferences
+                Boolean mondayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentMonday").getValue();
+                Boolean tuesdayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentTuesday").getValue();
+                Boolean wednesdayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentWednesday").getValue();
+                Boolean thursdayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentThursday").getValue();
+                Boolean fridayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentFriday").getValue();
                 //Obtaining user's number of Leaves (Total and current)
                 long currentNumberOfLeaves = (long) dataSnapshot.child("Profiles").child(uID).child("currentNumberOfLeaves").getValue();
                 long totalNumberOfLeaves = (long) dataSnapshot.child("Profiles").child(uID).child("totalNumberOfLeaves").getValue();
@@ -158,12 +170,86 @@ public class WeekPreferenceScreen extends AppCompatActivity {
                     DatabaseReference ref = database.getReference("Profiles").child(uID);
                     DatabaseReference newPreferencesField = ref.child("weekPreferences");
                     newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekDate, weekIndex));
+
+                    //Updating Stats
+                    DatabaseReference stats = database.getReference("Stats").child(weekIndex);
+                    if (mondayChecked.isChecked() != mondayPresent) {
+                        if (mondayChecked.isChecked()) {
+                            stats.child("day_1_monday").setValue(monday + 1);
+                        } else {
+                            stats.child("day_1_monday").setValue(monday - 1);
+                        }
+                    }
+
+                    if (tuesdayChecked.isChecked() != tuesdayPresent) {
+                        if (tuesdayChecked.isChecked()) {
+                            stats.child("day_2_tuesday").setValue(tuesday + 1);
+                        } else {
+                            stats.child("day_2_tuesday").setValue(tuesday - 1);
+                        }
+                    }
+
+                    if (wednesdayChecked.isChecked() != wednesdayPresent) {
+                        if (wednesdayChecked.isChecked()) {
+                            stats.child("day_3_wednesday").setValue(wednesday + 1);
+                        } else {
+                            stats.child("day_3_wednesday").setValue(wednesday - 1);
+                        }
+                    }
+
+                    if (thursdayChecked.isChecked() != thursdayPresent) {
+                        if (thursdayChecked.isChecked()) {
+                            stats.child("day_4_thursday").setValue(thursday + 1);
+                        } else {
+                            stats.child("day_4_thursday").setValue(thursday - 1);
+                        }
+                    }
+
+                    if (fridayChecked.isChecked() != fridayPresent) {
+                        if (fridayChecked.isChecked()) {
+                            stats.child("day_5_friday").setValue(friday + 1);
+                        } else {
+                            stats.child("day_5_friday").setValue(friday - 1);
+                        }
+                    }
                 } else {
                     DatabaseReference ref = database.getReference("Profiles").child(uID);
                     DatabaseReference newPreferencesField = ref.child("weekPreferences");
                     DatabaseReference updateCurrentLeaves = ref.child("currentNumberOfLeaves");
                     DatabaseReference updateTotalLeaves = ref.child("totalNumberOfLeaves");
                     DatabaseReference updatePlants = ref.child("plants");
+
+                    //Updating Stats
+                    DatabaseReference stats = database.getReference("Stats").child(weekIndex);
+                    if (mondayChecked.isChecked()) {
+                        stats.child("day_1_monday").setValue(monday + 1);
+                    } else {
+                        stats.child("day_1_monday").setValue(monday - 1);
+                    }
+
+                    if (tuesdayChecked.isChecked()) {
+                        stats.child("day_2_tuesday").setValue(tuesday + 1);
+                    } else {
+                        stats.child("day_2_tuesday").setValue(tuesday - 1);
+                    }
+
+                    if (wednesdayChecked.isChecked()) {
+                        stats.child("day_3_wednesday").setValue(wednesday + 1);
+                    } else {
+                        stats.child("day_3_wednesday").setValue(wednesday - 1);
+                    }
+
+                    if (thursdayChecked.isChecked()) {
+                        stats.child("day_4_thursday").setValue(thursday + 1);
+                    } else {
+                        stats.child("day_4_thursday").setValue(thursday - 1);
+                    }
+
+                    if (fridayChecked.isChecked()) {
+                        stats.child("day_5_friday").setValue(friday + 1);
+                    } else {
+                        stats.child("day_5_friday").setValue(friday - 1);
+                    }
 
                     if (currentNumberOfLeaves == 20) {
                         newPreferencesField.setValue(new UserPreferences(mondayChecked.isChecked(),tuesdayChecked.isChecked(),wednesdayChecked.isChecked(),thursdayChecked.isChecked(),fridayChecked.isChecked(), weekDate, weekIndex));
@@ -184,7 +270,13 @@ public class WeekPreferenceScreen extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void UpdateStats () {
+        // Update Stats
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        DatabaseReference statsRef = database.getReference("Stats");
     }
 
 }
