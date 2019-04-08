@@ -9,10 +9,16 @@
         android:roundIcon="@mipmap/green_leaf"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QRScannerScreenActivity"
+        <activity
+            android:name=".RedeemScreenActivity"
+            android:label="@string/title_activity_redeem_screen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".QRScannerScreenActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".InformationScreenActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".InformationScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LeaderboardScreenActivity"
             android:label="@string/title_activity_leaderboard_screen"

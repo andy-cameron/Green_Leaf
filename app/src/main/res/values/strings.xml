@@ -54,4 +54,9 @@
     <string name="redeem">Redeem Your Plants</string>
     <string name="redeem_info">Redeem your hard-earned plants for fantastic gifts to make your life more sustainable</string>
     <string name="redeem_now">Redeem Now</string>
+    <string name="title_activity_redeem_screen">RedeemScreenActivity</string>
+    <string name="redeem_title">/ Redeem Your Plants</string>
+    <string name="keepcup">KeepCup</string>
+    <string name="keep_cup_info">/ The Worlds First Barista Standard 16oz Large Reusable Cup</string>
+    <string name="chillys_redeem">/ The Chilly\'s Bottle keeps your drink warm for 12 hours and cool for 24 hours. It helps you stay hydrated and healthy in any environment your adventures take you.</string>
 </resources>
