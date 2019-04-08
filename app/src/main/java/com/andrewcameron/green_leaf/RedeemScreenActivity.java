@@ -26,7 +26,7 @@ public class RedeemScreenActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
-    private Long userPlantLeaves;
+    public long redeemValue;
 //    private Button btnReturn;
 
     //Prompt
@@ -75,6 +75,7 @@ public class RedeemScreenActivity extends AppCompatActivity {
         redeemItem1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                redeemValue = 3;
                 ShowPrompt(v);
             }
         });
@@ -82,10 +83,8 @@ public class RedeemScreenActivity extends AppCompatActivity {
         redeemItem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView redeemValuePrompt = (TextView) findViewById(R.id.redeem_reward_value_prompt);
-                long redeemValue = 5;
-
-                redeemValuePrompt.setText(redeemValue + " Plants");
+                redeemValue = 5;
+                ShowPrompt(v);
             }
         });
     }
@@ -104,14 +103,15 @@ public class RedeemScreenActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 long numberOfPlants = (long) dataSnapshot.getValue();
-                long redeemValue = 3;
 
                 if (numberOfPlants >= redeemValue) {
                     redeemLeavesPrompt.setContentView(R.layout.redeem_confirm_prompt);
                     Button btnReturn, btnConfirmPurchase;
                     btnReturn = (Button) redeemLeavesPrompt.findViewById(R.id.button_return_prompt_redeem);
                     btnConfirmPurchase = (Button) redeemLeavesPrompt.findViewById(R.id.confirm_purchase);
+                    TextView redeemValuePrompt = (TextView) redeemLeavesPrompt.findViewById(R.id.redeem_reward_value_prompt);
 
+                    redeemValuePrompt.setText(redeemValue + " Plants");
                     redeemLeavesPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     redeemLeavesPrompt.show();
 
@@ -167,7 +167,6 @@ public class RedeemScreenActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 long numberOfPlants = (long) dataSnapshot.getValue();
-                long redeemValue = 3;
 
                 updatePlants.setValue(numberOfPlants - redeemValue);
                 redeemLeavesPrompt.dismiss();
