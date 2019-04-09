@@ -286,11 +286,13 @@
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/user_leaves_title"
                 android:orientation="horizontal"
-                android:padding="15dp">
+                android:padding="15dp"
+                android:layout_gravity="center_horizontal"
+                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -322,14 +324,16 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="right">
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@mipmap/stampsheet_leaves20"
-                        android:background="@drawable/circle_fine"/>
+                        android:background="@drawable/circle_fine"
+                        android:layout_marginLeft="30dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -377,6 +381,70 @@
                 android:background="@drawable/content_panel_button"
                 android:text="Explore"
                 android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/redeem_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/content_panel"
+            android:orientation="vertical"
+            android:layout_marginBottom="25dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/redeem"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:paddingVertical="5dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="15dp">
+                <TextView
+                    android:layout_width= "wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/redeem_info"
+                    android:layout_weight="2"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/stampsheet_leaves20"
+                        android:layout_weight="5"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="="
+                        android:textStyle="bold"
+                        android:textSize="30sp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:src="@mipmap/outline_card_giftcard_black_48"
+                        android:layout_margin="5dp"
+                        android:alpha="0.6"/>
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/go_to_redeem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/content_panel_button"
+                android:text="@string/redeem_now" />
         </LinearLayout>
 
         <LinearLayout

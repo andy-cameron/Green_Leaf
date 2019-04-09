@@ -48,6 +48,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
         Button goToLeaderboard = (Button) findViewById(R.id.go_to_leaderboard);
         Button goToInformation = (Button) findViewById(R.id.go_to_user_information);
         Button goToScanQR = (Button) findViewById(R.id.go_to_scan_qr_code);
+        Button gotToRedeem = (Button) findViewById(R.id.go_to_redeem);
         Button returnToLogin = (Button) findViewById(R.id.return_to_login);
 
         final ImageView mondayPresentLight = (ImageView) findViewById(R.id.monday_panel_light);
@@ -87,6 +88,14 @@ public class ProfileScreenActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         }));
+
+        gotToRedeem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(ProfileScreenActivity.this, RedeemScreenActivity.class);
+                startActivity(myIntent);
+            }
+        });
 
         returnToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
