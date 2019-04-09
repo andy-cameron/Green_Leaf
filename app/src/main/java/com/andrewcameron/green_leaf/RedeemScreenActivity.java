@@ -39,25 +39,6 @@ public class RedeemScreenActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         redeemLeavesPrompt = new Dialog(this);
-//
-//        mUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if (mUser != null) {
-//            uID = mUser.getUid();
-//        }
-
-//        mDatabase = FirebaseDatabase.getInstance().getReference("Profiles");
-//        //Getting basic User Info
-//        mDatabase.child(uID).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                userPlantLeaves = (Long) dataSnapshot.child("plants").getValue();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
 
         Button redeemItem1 = (Button) findViewById(R.id.redeem_item_1);
         Button redeemItem2 = (Button) findViewById(R.id.redeem_item_2);

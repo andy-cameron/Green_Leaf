@@ -290,7 +290,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/user_leaves_title"
                 android:orientation="horizontal"
-                android:padding="15dp">
+                android:padding="15dp"
+                android:layout_gravity="center_horizontal"
+                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -322,14 +324,16 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="right">
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@mipmap/stampsheet_leaves20"
-                        android:background="@drawable/circle_fine"/>
+                        android:background="@drawable/circle_fine"
+                        android:layout_marginLeft="30dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
