@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
             android:paddingTop="20dp"
-            android:text="@string/welcome_green_leaf_sub_heading"
+            android:text="@string/heading_1"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -34,15 +34,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="12dp"
-            android:text="@string/sample_description"
-            android:textSize="15sp" />
+            android:text="@string/description_1"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
             android:paddingTop="20dp"
-            android:text="@string/welcome_green_leaf_sub_heading"
+            android:text="@string/heading_2"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -50,15 +50,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="12dp"
-            android:text="@string/sample_description"
-            android:textSize="15sp" />
+            android:text="@string/description_2"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
             android:paddingTop="20dp"
-            android:text="@string/welcome_green_leaf_sub_heading"
+            android:text="@string/heading_3"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -66,15 +66,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="12dp"
-            android:text="@string/sample_description"
-            android:textSize="15sp" />
+            android:text="@string/description_3"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
             android:paddingTop="20dp"
-            android:text="@string/welcome_green_leaf_sub_heading"
+            android:text="@string/heading_4"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -82,8 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="12dp"
-            android:text="@string/sample_description"
-            android:textSize="15sp" />
+            android:text="@string/description_4"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/button_lets_go"

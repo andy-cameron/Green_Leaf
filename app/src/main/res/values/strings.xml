@@ -31,7 +31,7 @@
     <string name="user_information_panel_title">Information</string>
     <string name="user_information_panel_description">View and modify your information and other details on your Green Leaf profile</string>
     <string name="title_activity_week_preference_screen">WeekPreferenceScreen</string>
-    <string name="welcome">/ Welcome</string>
+    <string name="welcome">/ Let Us Know!</string>
     <string name="Leaderboard">/ Leaderboard</string>
     <string name="week_preference_instruction">Let the kitchen know when you will be needing to eat the pre prepared meals.</string>
     <string name="confirm_days">Confirm Days</string>
@@ -59,4 +59,12 @@
     <string name="keepcup">KeepCup</string>
     <string name="keep_cup_info">/ The Worlds First Barista Standard 16oz Large Reusable Cup</string>
     <string name="chillys_redeem">/ The Chilly\'s Bottle keeps your drink warm for 12 hours and cool for 24 hours. It helps you stay hydrated and healthy in any environment your adventures take you.</string>
+    <string name="heading_1">/ What is Green Leaf?</string>
+    <string name="heading_2">/ How does it work?</string>
+    <string name="heading_3">/ Why we need Green Leaf?</string>
+    <string name="heading_4">/ Where is Green Leaf Used?</string>
+    <string name="description_1">What is Green Leaf? Green Leaf is an app to help encourage sustainable behaviour within your organisation or institution</string>
+    <string name="description_2">How does it work? Green Leaf rewards user’s for letting their organisation or institution know when they will be needing lunch! Every time you submit your details for the new week ahead you will be rewarded with leaves. Collect 20 leaves and you will get a plant, and with these plants you can redeem them for amazing rewards!</string>
+    <string name="description_3">Why do we need Green Leaf? With today’s society focusing on being more sustainable, it is essential that we try reduce one of the major threats that is food wastage. With Green Leaf our goal is to only prepare what we need. Not a crumb more!</string>
+    <string name="description_4">Where is Green Leaf used? Green Leaf is used wherever you have meals prepared for yourself and others. Can be at your school, University halls and even your place of work. Let us know when you and are not in, then we will be able to meet our goal of creating a more sustainable environment</string>
 </resources>
