@@ -20,14 +20,6 @@
             android:layout_height="match_parent"
             android:text="@string/welcome"
             android:textSize="30sp"/>
-        <TextView
-            android:id="@+id/user_week_preference_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User's Name"
-            android:textSize="30sp"
-            android:paddingLeft="8dp"
-            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
