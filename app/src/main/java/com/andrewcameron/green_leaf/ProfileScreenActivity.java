@@ -21,7 +21,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "";
 
-    private DatabaseReference mDatabase, mDatabaseConfiguration;
+    private DatabaseReference mDatabase, mDatabasePanel;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
     private String uID;
@@ -56,6 +56,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
         final ImageView wednesdayPresentLight = (ImageView) findViewById(R.id.wednesday_panel_light);
         final ImageView thursdayPresentLight = (ImageView) findViewById(R.id.thursday_panel_light);
         final ImageView fridayPresentLight = (ImageView) findViewById(R.id.friday_panel_light);
+        final ImageView notificationDot = (ImageView) findViewById(R.id.notification_panel);
 
         goToPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +112,8 @@ public class ProfileScreenActivity extends AppCompatActivity {
         }
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Profiles");
-        mDatabaseConfiguration = FirebaseDatabase.getInstance().getReference("Configuration");
+        mDatabasePanel = FirebaseDatabase.getInstance().getReference();
+//        mDatabaseConfiguration = FirebaseDatabase.getInstance().getReference("Configuration");
 
         //Getting Configuration Info
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -151,14 +153,16 @@ public class ProfileScreenActivity extends AppCompatActivity {
         });
 
         //Getting days present
-        mDatabase.child(uID).child("weekPreferences").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabasePanel.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Boolean mondayPresent = (Boolean) dataSnapshot.child("presentMonday").getValue();
-                Boolean tuesdayPresent = (Boolean) dataSnapshot.child("presentTuesday").getValue();
-                Boolean wednesdayPresent = (Boolean) dataSnapshot.child("presentWednesday").getValue();
-                Boolean thursdayPresent = (Boolean) dataSnapshot.child("presentThursday").getValue();
-                Boolean fridayPresent = (Boolean) dataSnapshot.child("presentFriday").getValue();
+                Boolean mondayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentMonday").getValue();
+                Boolean tuesdayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentTuesday").getValue();
+                Boolean wednesdayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentWednesday").getValue();
+                Boolean thursdayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentThursday").getValue();
+                Boolean fridayPresent = (Boolean) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("presentFriday").getValue();
+                String userWeekSubmitted = (String) dataSnapshot.child("Profiles").child(uID).child("weekPreferences").child("recentWeekSubmitted").getValue();
+                String currentWeek = (String) dataSnapshot.child("Configuration").child("current_week").getValue();
 
                 if (mondayPresent) {
                     mondayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_green, null));
@@ -185,6 +189,9 @@ public class ProfileScreenActivity extends AppCompatActivity {
                 }
                 else fridayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_red, null));
 
+                if (userWeekSubmitted.equals(currentWeek)) {
+                    notificationDot.setVisibility(View.GONE);
+                }
 
             }
 
