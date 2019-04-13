@@ -189,10 +189,13 @@ public class ProfileScreenActivity extends AppCompatActivity {
                 }
                 else fridayPresentLight.setBackground(getResources().getDrawable(R.drawable.icon_light_red, null));
 
-                if (userWeekSubmitted.equals(currentWeek)) {
-                    notificationDot.setVisibility(View.GONE);
+                try {
+                    if (userWeekSubmitted.equals(currentWeek)) {
+                        notificationDot.setVisibility(View.GONE);
+                    }
+                } catch (Exception e) {
+                    System.out.println("User has not set preferences yet");
                 }
-
             }
 
             @Override

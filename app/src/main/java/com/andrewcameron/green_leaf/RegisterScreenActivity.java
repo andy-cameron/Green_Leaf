@@ -112,7 +112,7 @@ public class RegisterScreenActivity extends AppCompatActivity implements View.On
 
         DatabaseReference newProfile = ref.child(uID);
         newProfile.setValue(new UserProfile(mEmailField.getText().toString(), mFirstName.getText().toString(), mLastName.getText().toString(), mOrganisation.getText().toString(), starterLeaves, starterLeaves, starterPlants));
-        newProfile.child("weekPreferences").setValue(new UserPreferences(false, false, false, false, false, null, null));
+        newProfile.child("weekPreferences").setValue(new UserPreferences(false, false, false, false, false, null, null, 1));
     }
 
     @Override
