@@ -17,12 +17,12 @@
 
         <TextView
             android:id="@+id/users_name_display"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:paddingBottom="10dp"
-            android:textSize="40sp"
             android:textStyle="bold"
-            android:text="User's name"/>
+            android:text="User's name"
+            android:autoSizeTextType="uniform"/>
 
         <TextView
             android:id="@+id/user_organisation_display"
