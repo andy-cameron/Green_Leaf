@@ -3,8 +3,9 @@ package com.andrewcameron.green_leaf;
 public class UserPreferences {
     private Boolean presentMonday, presentTuesday, presentWednesday, presentThursday, presentFriday;
     private String recentWeekSubmitted, recentWeekIndexSubmitted;
+    private long bonusCode;
 
-    public UserPreferences(Boolean presentMonday, Boolean presentTuesday, Boolean presentWednesday, Boolean presentThursday, Boolean presentFriday, String recentWeekSubmitted, String recentWeekIndexSubmitted) {
+    public UserPreferences(Boolean presentMonday, Boolean presentTuesday, Boolean presentWednesday, Boolean presentThursday, Boolean presentFriday, String recentWeekSubmitted, String recentWeekIndexSubmitted, long bonusCode) {
         this.presentMonday = presentMonday;
         this.presentTuesday = presentTuesday;
         this.presentWednesday = presentWednesday;
@@ -12,6 +13,7 @@ public class UserPreferences {
         this.presentFriday = presentFriday;
         this.recentWeekSubmitted = recentWeekSubmitted;
         this.recentWeekIndexSubmitted = recentWeekIndexSubmitted;
+        this.bonusCode = bonusCode;
     }
 
     public Boolean getPresentMonday() {
@@ -68,5 +70,13 @@ public class UserPreferences {
 
     public void setRecentWeekIndexSubmitted(String recentWeekIndexSubmitted) {
         this.recentWeekIndexSubmitted = recentWeekIndexSubmitted;
+    }
+
+    public long getBonusCode() {
+        return bonusCode;
+    }
+
+    public void setBonusCode(long bonusCode) {
+        this.bonusCode = bonusCode;
     }
 }

@@ -12,16 +12,98 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/heading_text"
-        android:text="/ Scan The QR Code"
+        android:text="/ Enter Bonus Code"
         android:paddingBottom="25dp"
-        android:textStyle="bold"/>
-    <SurfaceView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:visibility="visible"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/content_panel_button" />
+        android:textStyle="bold" />
 
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="200dp">
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <EditText
+                android:id="@+id/code_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:imeOptions="actionNext"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/code_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:imeOptions="actionNext"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/code_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:imeOptions="actionNext"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/code_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:imeOptions="actionNext"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/code_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:imeOptions="actionNext"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/code_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:imeOptions="actionDone"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:inputType="number"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/verify_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/content_panel_button"
+            android:text="Verify Bonus Code"
+            android:textColor="@color/darkGreen"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/return_to_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:layout_marginTop="200dp"
+        android:layout_gravity="center"
+        android:text="Return"
+        android:textColor="@color/darkestGreen"/>
 </LinearLayout>
