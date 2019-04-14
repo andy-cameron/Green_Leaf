@@ -68,6 +68,14 @@ public class RedeemScreenActivity extends AppCompatActivity {
                 ShowPrompt(v);
             }
         });
+
+        redeemItem3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redeemValue = 2;
+                ShowPrompt(v);
+            }
+        });
     }
 
     public void ShowPrompt (View v) {
@@ -151,41 +159,6 @@ public class RedeemScreenActivity extends AppCompatActivity {
 
                 updatePlants.setValue(numberOfPlants - redeemValue);
                 redeemLeavesPrompt.dismiss();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    public void ConfirmRedeemPrompt () {
-//        redeemLeavesPrompt.setContentView(R.layout.redeem_confirm_prompt);
-//        redeemLeavesPrompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        redeemLeavesPrompt.show();
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            uID = user.getUid();
-        }
-
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("Profiles").child(uID);
-        final DatabaseReference updatePlants = ref.child("plants");
-
-        updatePlants.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final long numberOfPlants = (long) dataSnapshot.getValue();
-                //Button Return
-                Button btnReturn = (Button) findViewById(R.id.button_return_prompt_redeem);
-                btnReturn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        redeemLeavesPrompt.dismiss();
-                    }
-                });
             }
 
             @Override
