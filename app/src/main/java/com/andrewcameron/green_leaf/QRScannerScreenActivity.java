@@ -46,13 +46,6 @@ public class QRScannerScreenActivity extends AppCompatActivity {
         mCode5 = (EditText) findViewById(R.id.code_5);
         mCode6 = (EditText) findViewById(R.id.code_6);
 
-//        mCode1.setText("0");
-//        mCode2.setText("0");
-//        mCode3.setText("0");
-//        mCode4.setText("0");
-//        mCode5.setText("0");
-//        mCode6.setText("0");
-
         returnToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

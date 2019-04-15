@@ -101,7 +101,6 @@ public class RegisterScreenActivity extends AppCompatActivity implements View.On
         long starterLeaves = 1;
         long starterPlants = 0;
 
-        //INVESTIGATE
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             uID = user.getUid();
