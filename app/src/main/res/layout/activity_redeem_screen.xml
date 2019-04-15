@@ -129,17 +129,17 @@
                     android:textSize="22dp"
                     android:textStyle="bold"
                     android:paddingTop="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cost 5 Plants"
-                    android:textStyle="bold"
-                    android:textColor="@color/darkestGreen"
-                    android:textSize="18dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="150dp"
                     android:src="@mipmap/toothbrush_reward"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cost 2 Plants"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkestGreen"
+                    android:textSize="18dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
