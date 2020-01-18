@@ -3,7 +3,7 @@
 
 ## What is Green Leaf?
 ![Green Leaf Screenshots](https://github.com/andy-cameron/Green_Leaf/blob/master/images/screenshots_of_green_leaf.png)
-Green Leaf was a Loyalty Based Platrform developed in my final year gaining inspiration from my placement year during university working in the loyalty app industry.
+Green Leaf was a Loyalty Based Platform developed in my final year gaining inspiration from my placement year during university working in the loyalty app industry.
 
 The purpose of Green Leaf is to be used at numerous types of organisations that provide food daily for their employees, students or individuals who regularly eat at their canteen/food service. These organisations range from schools, University Halls, office canteens and many more!
 
